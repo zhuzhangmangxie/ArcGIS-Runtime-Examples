@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:esri="http://schemas.esri.com/arcgis/client/2009"
+    Title="MainWindow" Height="350" Width="525">
+    <Grid x:Name="LayoutRoot" >
+        <Grid.Resources>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </Grid.Resources>
+        <esri:Map x:Name="MyMap" WrapAround="True" Background="#FFE3E3E3">
+            <esri:ArcGISTiledMapServiceLayer ID="MyLayer" 
+                Url="http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer" />
+        </esri:Map>
+        <ProgressBar x:Name="MyProgressBar" IsIndeterminate="True" VerticalAlignment="Bottom" Width="200" Height="20" Margin="10" Visibility="{Binding Path=IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"></ProgressBar>
+    </Grid>
+
+</Window>
